@@ -4,15 +4,28 @@ import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 
+import static org.lwjgl.opengl.GL11.*;
+
+import helpers.Artist;
+
 public class Boot {
 	
 	public Boot() {
-		Display.setTitle("Creepy Crawlers Remake");
-		try {
-			Display.setDisplayMode(new DisplayMode(600, 400));
-			Display.create();
-		} catch (LWJGLException e) {
-			e.printStackTrace();
+		
+		Artist.BeginSession();
+		
+		float width = 50;
+		float height = 50;
+		float x = 100;
+		float y = 100;
+		
+		while(!Display.isCloseRequested()) {
+			
+			Artist.DrawQuad(50, 50, 100, 100);
+			Artist.DrawQuad(150, 150, 100, 100);
+			
+			Display.update();
+			Display.sync(60);
 		}
 	}
 	
