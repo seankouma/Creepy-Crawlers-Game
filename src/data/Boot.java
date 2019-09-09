@@ -3,6 +3,7 @@ package data;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
+import org.newdawn.slick.opengl.*;
 
 import static org.lwjgl.opengl.GL11.*;
 
@@ -14,15 +15,13 @@ public class Boot {
 		
 		Artist.BeginSession();
 		
-		float width = 50;
-		float height = 50;
-		float x = 100;
-		float y = 100;
-		
+		Tile tile = new Tile(0, 0, 64, 64, TileType.Grass);
+		Tile tile2 = new Tile(0, 64, 64, 64, TileType.Dirt);
 		while(!Display.isCloseRequested()) {
 			
-			Artist.DrawQuad(50, 50, 100, 100);
-			Artist.DrawQuad(150, 150, 100, 100);
+			tile.Draw();
+			tile2.Draw();
+
 			
 			Display.update();
 			Display.sync(60);
